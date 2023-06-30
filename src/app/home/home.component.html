@@ -1,0 +1,62 @@
+<div class="header">
+
+
+
+    <div class="container ">
+       
+            <h4>Companies Data</h4>
+            <div>
+                <p-button (click)="showDialog()" icon="pi pi-external-link" label="Create"></p-button>
+                <button routerLink="/login" >Logout</button>
+           
+    </div>
+    </div>
+    </div>
+   <div class="container-fluid">
+    <table >
+        <tr>
+            <th>company name</th>
+            <th>company place</th>
+            <th>Established year</th>
+            <th>Number of employees</th>
+
+
+
+        </tr>
+<tr>
+    
+</tr>
+
+        </table>
+   </div>
+  
+   <p-dialog header="Header" [(visible)]="visible" [style]="{width: '50vw'}">
+    <form action="form" [formGroup]="reactiveForm"  >
+       <mat-dialog-content>
+           <p>
+               <mat-form-field>
+                   <input type="text" matInput placeholder="to" formControlName="username" >
+                   <mat-icon matSuffix>person</mat-icon>
+               </mat-form-field>
+           </p>
+           <p>
+               <mat-form-field>
+                   <input type="text" matInput placeholder="Subject" formControlName="job" >
+                   <mat-icon matSuffix>drafts</mat-icon>
+               </mat-form-field>
+           </p>
+           <p>
+               <mat-form-field>
+                <input type="text" matInput placeholder="Subject" formControlName="experience" >
+                 
+               </mat-form-field>
+           </p>
+       
+       </mat-dialog-content>
+       <mat-dialog-actions align="end">
+           <button mat-raised-button color="primary" (click)=" onSubmit()" [disabled]="reactiveForm.invalid" >send</button>
+           <button mat-raised-button color="warn" mat-dialog-close>cancel</button>
+       
+       </mat-dialog-actions>
+       </form>
+ </p-dialog>
