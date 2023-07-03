@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       }
      )
      
-
+     this.editFormValidations();
      
   }
  
@@ -55,9 +55,23 @@ export class HomeComponent implements OnInit {
     this.pushArray.push(this.reactiveForm.value)
     
     localStorage.setItem('userstorage', JSON.stringify( this.pushArray) );
-    // console.log(this.pushArray);
+    console.log(this.pushArray);
 
   }
+editFormValidations(){
+
+  this.editreactiveForm=new FormGroup(
+    {
+      editusername:new FormControl('',Validators.required),
+      editplace:new FormControl(''),
+    edityear:new FormControl(''),
+  editeno:new FormControl(''),
+
+    }
+   )
+  
+}
+
   editDialog(user:any,i:any){
     this.visible1 = true;
   
@@ -75,10 +89,17 @@ export class HomeComponent implements OnInit {
   console.log(this.editreactiveForm.value);
   this.updateData=this.editreactiveForm.value;
 
-    
-
   }
-  
+
+  updatet(){
+    
+    console.log(this.pushArray);
+    
+    
+    }
+
+
+
 // edit
 row:any[]=[];
 
@@ -99,9 +120,5 @@ deleteRow(i:any){
 
 
 }
-updatet(){
-this.pushArray[this.currentIndex]-this.reactiveForm.value;
-// console.log(this.editreactiveForm.value);
 
-}
  }
