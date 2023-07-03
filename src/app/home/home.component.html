@@ -1,10 +1,6 @@
 <div class="header">
-
-
-
     <div class="container ">
-       
-            <h4>Companies Data</h4>
+          <h4>Companies Data</h4>
             <div>
                 <p-button (click)="showDialog()" icon="pi pi-external-link" label="Create"></p-button>
                 <button routerLink="/login" >Logout</button>
@@ -15,46 +11,116 @@
    <div class="container-fluid">
     <table >
         <tr>
+            <th>id</th>
             <th>company name</th>
             <th>company place</th>
             <th>Established year</th>
             <th>Number of employees</th>
-
-
-
+            <th>Actions</th>
         </tr>
-<tr>
+<tr *ngFor="let user of  pushArray;let i=index">
+    <td>id</td>
+    <td>
+{{user.username}}
+    </td>
+    <td>
+{{user.place}}
+        
+    </td>
+    <td>
+        {{user.year}}
+
+    </td>
+    <td>
+        {{user.eno}}
+
+    </td>
+   
+   <td>
+    <div class="actions-button m-2"  >
+        <button mat-raised-button (click)="editDialog(user,i)" >edit</button>
+        <!-- to get each or selected row values -->
+        <button mat-raised-button color="warn" (click)="deleteRow(i)" >delete</button>
+
+    </div>
+   </td>
     
 </tr>
 
         </table>
    </div>
   
-   <p-dialog header="Header" [(visible)]="visible" [style]="{width: '50vw'}">
-    <form action="form" [formGroup]="reactiveForm"  >
+   <p-dialog header="Companies details" [(visible)]="visible" [style]="{width: '50vw'}">
+    <form action="form" [formGroup]="reactiveForm" >
        <mat-dialog-content>
            <p>
                <mat-form-field>
-                   <input type="text" matInput placeholder="to" formControlName="username" >
+                   <input type="text" matInput placeholder="Name" formControlName="username" >
                    <mat-icon matSuffix>person</mat-icon>
                </mat-form-field>
            </p>
+           
            <p>
                <mat-form-field>
-                   <input type="text" matInput placeholder="Subject" formControlName="job" >
-                   <mat-icon matSuffix>drafts</mat-icon>
+                   <input type="text" matInput placeholder="Place" formControlName="place" >
+                   <i class="pi pi-map-marker "></i>
                </mat-form-field>
            </p>
            <p>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Est Year" formControlName="year" >
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        </p>
+           <p>
                <mat-form-field>
-                <input type="text" matInput placeholder="Subject" formControlName="experience" >
+                <input type="number" matInput placeholder="Number of employees" formControlName="eno" >
                  
                </mat-form-field>
            </p>
        
        </mat-dialog-content>
        <mat-dialog-actions align="end">
-           <button mat-raised-button color="primary" (click)=" onSubmit()" [disabled]="reactiveForm.invalid" >send</button>
+           <button mat-raised-button color="primary" (click)=" onSubmit()" [disabled]="reactiveForm.invalid" type="submit">save</button>
+           <button mat-raised-button color="warn" mat-dialog-close>cancel</button>
+       
+       </mat-dialog-actions>
+       </form>
+ </p-dialog>
+ <!--edit  -->
+
+ <p-dialog header="Edit details" [(visible)]="visible1" [style]="{width: '50vw'}">
+    <form action="form" [formGroup]="editreactiveForm" >
+       <mat-dialog-content>
+           <p>
+               <mat-form-field>
+                   <input type="text" matInput placeholder="Name" formControlName="editusername" >
+                   <mat-icon matSuffix>person</mat-icon>
+               </mat-form-field>
+           </p>
+           
+           <p>
+               <mat-form-field>
+                   <input type="text" matInput placeholder="Place" formControlName="editplace" >
+                   <i class="pi pi-map-marker "></i>
+               </mat-form-field>
+           </p>
+           <p>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Est Year" formControlName="edityear" >
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        </p>
+           <p>
+               <mat-form-field>
+                <input type="number" matInput placeholder="Number of employees" formControlName="editeno" >
+                 
+               </mat-form-field>
+           </p>
+       
+       </mat-dialog-content>
+       <mat-dialog-actions align="end">
+           <button mat-raised-button color="primary" (click)="updatet()" [disabled]="reactiveForm.invalid" type="submit">Update</button>
            <button mat-raised-button color="warn" mat-dialog-close>cancel</button>
        
        </mat-dialog-actions>

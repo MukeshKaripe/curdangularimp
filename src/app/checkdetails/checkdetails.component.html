@@ -1,0 +1,38 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+        <td>
+          <button (click)="editItem(item)">Edit</button>
+          <button (click)="deleteItem(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal" [hidden]="!editMode">
+    <h2>Edit Item</h2>
+    <form (submit)="saveItem()">
+      <label>ID:</label>
+      <input type="number" [(ngModel)]="editItems.id" name="id" required>
+      <br>
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="editItems.name" name="name" required>
+      <br>
+      <label>Age:</label>
+      <input type="number" [(ngModel)]="editItems.age" name="age" required>
+      <br>
+      <button type="submit">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+  

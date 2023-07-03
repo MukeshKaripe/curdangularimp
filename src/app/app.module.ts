@@ -14,11 +14,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CheckdetailsComponent } from './checkdetails/checkdetails.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CheckdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    HttpClientModule,
+    
     
 
 
