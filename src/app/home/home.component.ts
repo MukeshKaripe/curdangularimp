@@ -33,18 +33,7 @@ export class HomeComponent implements OnInit {
   
       }
      )
-     this.editreactiveForm=new FormGroup(
-      {
-        editusername:new FormControl(this.reactiveForm.get('username'),Validators.required),
-        editplace:new FormControl(this.reactiveForm.get('place')?.value),
-      edityear:new FormControl(this.reactiveForm.get('year')?.value),
-    editeno:new FormControl(this.reactiveForm.get('eno')?.value),
-  
-      }
-     )
      
-  console.log(this.editreactiveForm.value);
-  this.updateData=this.editreactiveForm.value;
 
      
   }
@@ -66,20 +55,25 @@ export class HomeComponent implements OnInit {
     this.pushArray.push(this.reactiveForm.value)
     
     localStorage.setItem('userstorage', JSON.stringify( this.pushArray) );
-    console.log(this.pushArray);
+    // console.log(this.pushArray);
 
   }
   editDialog(user:any,i:any){
     this.visible1 = true;
-    console.log(user);
-    this.currentIndex = i;
-    this.editreactiveForm.setValue(user);
-    for (let i = 0; i <this.pushArray.length; i++) {
-      const element = this.pushArray[i];
-      
-      
-    }
-
+  
+    
+    this.editreactiveForm=new FormGroup(
+      {
+        editusername:new FormControl(user.username,Validators.required),
+        editplace:new FormControl(user.place),
+      edityear:new FormControl(user.year),
+    editeno:new FormControl(user.eno),
+  
+      }
+     )
+     
+  console.log(this.editreactiveForm.value);
+  this.updateData=this.editreactiveForm.value;
 
     
 
@@ -107,7 +101,7 @@ deleteRow(i:any){
 }
 updatet(){
 this.pushArray[this.currentIndex]-this.reactiveForm.value;
-console.log(this.editreactiveForm.value);
+// console.log(this.editreactiveForm.value);
 
 }
  }
